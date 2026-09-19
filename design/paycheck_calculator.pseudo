@@ -1,27 +1,33 @@
-# IT 140 Module Three Assignment
-# Paycheck Calculator Pseudocode Template
-#
-# Replace every TODO prompt with your own pseudocode.
-# Keep this file in .pseudo format for submission.
-#
-# Your finished pseudocode should represent the same logic as your flowchart.
-# Use clear indentation and ALLCAPS pseudocode keywords, such as GET (input),
-# PUT (output), LET (assignment), IF, ELSE, and ENDIF where they fit your design.
+// Module Three Assignment: Paycheck Calculator Pseudocode
+// Description: Calculates weekly gross pay including overtime for hours worked over 40.
 
-START paycheck_calculator
+START
 
-    TODO: Obtain the required program input.
+    // Declare variables
+    DECLARE hoursWorked AS FLOAT
+    DECLARE hourlyRate AS FLOAT
+    DECLARE regularPay AS FLOAT
+    DECLARE overtimePay AS FLOAT
+    DECLARE grossPay AS FLOAT
 
-    IF TODO: Specify the condition for the applicable pay rule.
-        TODO: List the processing steps for the true decision path.
+    // Initialize constant rates
+    SET hourlyRate = 20.00
+    SET overtimeRate = 30.00
+
+    // Get input from user
+    DISPLAY "Enter total hours worked this week: "
+    INPUT hoursWorked
+
+    // Decision branching for regular vs overtime pay
+    IF hoursWorked <= 40 THEN
+        SET regularPay = hoursWorked * hourlyRate
+        SET grossPay = regularPay
     ELSE
-        TODO: List the processing steps for the false decision path.
+        SET regularPay = 40 * hourlyRate
+        SET overtimePay = (hoursWorked - 40) * overtimeRate
+        SET grossPay = regularPay + overtimePay
     ENDIF
 
-    TODO: Output the calculated weekly paycheck.
-
-END paycheck_calculator
-
-
-# === References ===
-# TODO: List outside sources or assistance you actually used, or delete this line.
+    // Output the final calculated weekly paycheck
+    DISPLAY "Your total weekly paycheck is: $"
+    DISPLAY grossPay
